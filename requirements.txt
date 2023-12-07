@@ -11,6 +11,7 @@ numpy
 numpy_financial==1.0.0
 pandas
 plotly_express==0.4.1
+werkzeug==2.2.1
 scipy
 gunicorn
 openpyxl

@@ -730,4 +730,4 @@ def calc_cashflow(data1, data2, invest, strom_now, gas_now, strom_future, gas_fu
                                     ]
 
 if __name__ == '__main__':
-    app.run_server(debug=True, port=8050)
+    app.run_server(debug=False)

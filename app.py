@@ -136,20 +136,23 @@ container_system=dbc.Container(
                     [
                         html.H3("Ausgangssystem"),
                         dbc.Label("PV-Größe (kWp)"),
-                        dcc.Slider(min=40,max=1700,step=10,id="pv-size-input",marks={40: '40 kWp', 1500: '1500 kWp'} ,persistence='local', tooltip={"placement": "bottom", "always_visible": False}),
+                        dcc.Slider(value=40,min=40,max=1700,step=10,id="pv-size-input",marks={40: '40 kWp', 1500: '1500 kWp'} ,persistence='local', tooltip={"placement": "bottom", "always_visible": False}),
                         
                         dbc.Label("Windkraftanlage"),
                          dcc.Dropdown(id='wka-dropdown',
                             options=['Aus', 'Ein'],
+                            value='Ein',
                             placeholder='Wähle eine Option', persistence='local'),
 
                         dbc.Label("BHKW Regelung"),
                         dcc.Dropdown(id='dropdown',
+                            value='stromgeführt',
                             options=['Aus', 'wärmegeführt', 'stromgeführt', 'bedarfsorientiert'],
                             placeholder='Wähle eine Option', persistence='local'),
                         
                         dbc.Label("Wärmepumpe"),
                         dcc.Dropdown(id='wp-slider',
+                            value='Aus',
                             options=[
                                 'Aus', 'Luft/Wasser 200', 'Luft/Wasser 400',
                                 'Luft/Wasser 600', 'Luft/Wasser 800', 'Luft/Wasser 1000',
@@ -192,16 +195,18 @@ container_system=dbc.Container(
                     [
                         html.H3("Zielsystem"),
                         dbc.Label("PV-Größe (kWp)"),
-                        dcc.Slider(min=40,max=1700,step=10,id="pv-size-input2",marks={40: '40 kWp', 1500: '1500 kWp'} ,persistence='local', tooltip={"placement": "bottom", "always_visible": False}),
+                        dcc.Slider(value=530,min=40,max=1700,step=10,id="pv-size-input2",marks={40: '40 kWp', 1500: '1500 kWp'} ,persistence='local', tooltip={"placement": "bottom", "always_visible": False}),
                         
                         dbc.Label("Windkraftanlage"),
                          dcc.Dropdown(id='wka-dropdown2',
+                            value='Ein',
                             options=['Aus', 'Ein'],
                             placeholder='Wähle eine Option', persistence='local'),
 
                         dbc.Label("BHKW Regelung"),
                         dcc.Dropdown(id='dropdown2',
                             options=['Aus', 'wärmegeführt', 'stromgeführt', 'bedarfsorientiert'],
+                            value='wärmegeführt',
                             placeholder='Wähle eine Option', persistence='local'),
                         
                         dbc.Label("Wärmepumpe"),
@@ -211,6 +216,7 @@ container_system=dbc.Container(
                                 'Luft/Wasser 600', 'Luft/Wasser 800', 'Luft/Wasser 1000',
                                 'Sole/Wasser 200', 'Sole/Wasser 400', 'Sole/Wasser 600',
                                 'Sole/Wasser 800', 'Sole/Wasser 1000'],
+                            value='Aus',
                             placeholder='Wähle eine Option', persistence='local'),
                         dbc.Label("Vorlauftemperatur: "),html.Br(),
                         dcc.Input(
@@ -249,6 +255,7 @@ container_system=dbc.Container(
     ],
     fluid=False,
 )
+
 container_performance=dbc.Container(
     [
         dbc.Row(

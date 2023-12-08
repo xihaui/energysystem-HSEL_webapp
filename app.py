@@ -728,6 +728,16 @@ def calc_cashflow(data1, data2, invest, strom_now, gas_now, strom_future, gas_fu
                                     html.Br(), html.Div('Gesamtpreis Ausgangssystem: ' + str(calc_costs_strom((df1.loc[(df1['Einheit']=='maximaler Netzbezug [kW]')&(df1['Wetter']=='Jetzt Normal'),'Wert'].values[0]),(df1.loc[(df1['Einheit']=='Netzbezug [kWh]')&(df1['Wetter']=='Jetzt Normal'),'Wert'].values[0]),0)+calc_costs_gas((df1.loc[(df1['Einheit']=='maximaler Gasbezug [kW]')&(df1['Wetter']=='Jetzt Normal'),'Wert'].values[0]),(df1.loc[(df1['Einheit']=='Gasbezug [kWh]')&(df1['Wetter']=='Jetzt Normal'),'Wert'].values[0]),df1.loc[(df1['Einheit']=='Volllaststunden BHKW [h]')&(df1['Wetter']=='Jetzt Normal'),'Wert'].values[0]))+ ' €'),
                                     html.Div('Gesamtpreis Zielsystem: ' + str(calc_costs_strom((df2.loc[(df2['Einheit']=='maximaler Netzbezug [kW]')&(df2['Wetter']=='Jetzt Normal'),'Wert'].values[0]),(df2.loc[(df2['Einheit']=='Netzbezug [kWh]')&(df2['Wetter']=='Jetzt Normal'),'Wert'].values[0]),0)+calc_costs_gas((df2.loc[(df2['Einheit']=='maximaler Gasbezug [kW]')&(df2['Wetter']=='Jetzt Normal'),'Wert'].values[0]),(df2.loc[(df2['Einheit']=='Gasbezug [kWh]')&(df2['Wetter']=='Jetzt Normal'),'Wert'].values[0]),df2.loc[(df1['Einheit']=='Volllaststunden BHKW [h]')&(df2['Wetter']=='Jetzt Normal'),'Wert'].values[0])) + ' €')
                                     ]
+# Info button content
+@app.callback(
+    Output('info_dialog', 'displayed'),
+    Output('info_dialog','message'),
+    Input('button_info','n_clicks'),
+)
+def display_info(n_clicks_info):
+    if n_clicks_info is None:
+        raise PreventUpdate
+    return True, ('Webtool zur Simulation von Energiekosten unter verschiedenen Szenarien \n Erstellt vom Klimaschutzmanager deiner Hochschule \n Code verfügbar unter: \n https://github.com/xihaui/energysystem-HSEL_webapp/tree/main \n Bei Fragen, Anregungen und Kritik bitte bei hauke.hoops@hs-emden-leer.de melden :)')
 
 if __name__ == '__main__':
     app.run_server(debug=False)
